@@ -1,6 +1,6 @@
 package chapter9.Synchronization;
 
-public class PracticeExercise1 {
+public class PracticeExercise2 {
 	public static void main(String args[]) {
 		StringBuffer stringBuffer = new StringBuffer();
 		stringBuffer.append('A');
