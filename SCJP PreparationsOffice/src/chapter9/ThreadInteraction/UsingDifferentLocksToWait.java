@@ -8,17 +8,20 @@ public class UsingDifferentLocksToWait {
 		thread1.start();
 
 		synchronized (usingDifferentLocksToWait) {
-			System.out.println("Waiting for incorrect object. Should throw exception.");
-			try {
-				usingDifferentLocksToWait.wait();
-				System.out.println("Inside wait");
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			System.out.println(
+					"Waiting on an object and receive notification from other." + " Would keep waiting forever....");
+			synchronized (usingDifferentLocksToWait) {
+				System.out.println("Waiting for incorrect object. Should throw exception.");
+				try {
+					usingDifferentLocksToWait.wait();
+					System.out.println("This won't be executed ever. Alas! Dead code.");
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
-	}
 
+	}
 }
 
 class ThreadToNotify implements Runnable {
@@ -26,11 +29,14 @@ class ThreadToNotify implements Runnable {
 
 	@Override
 	public void run() {
+		int i;
 		synchronized (this) {
-			for (int i = 0; i < 10; i++) {
-				System.out.println(i);
+			for (i = 0; i < 10; i++) {
+				i++;
 			}
+			System.out.println("The Sum is : " + i);
 			notify();
 		}
 	}
+
 }
