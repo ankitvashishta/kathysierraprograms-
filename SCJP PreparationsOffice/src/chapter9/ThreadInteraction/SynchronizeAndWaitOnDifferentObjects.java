@@ -24,7 +24,7 @@ class ClassToNotify implements Runnable {
 		int i;
 		synchronized (str) {
 			System.out.println("This block synchronizes on StringBuffer object and calls"
-					+ " notify on 'this' ie. currently executing object. ");
+					+ " notify on 'this' ie. currently executing object.");
 			System.out.println("A runtime exception would be thrown - 'IllegalMonitorStateException'");
 			for (i = 0; i < 10; i++) {
 				i++;
