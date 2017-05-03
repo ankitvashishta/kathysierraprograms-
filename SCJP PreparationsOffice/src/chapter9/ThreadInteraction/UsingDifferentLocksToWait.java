@@ -9,7 +9,7 @@ public class UsingDifferentLocksToWait {
 
 		synchronized (usingDifferentLocksToWait) {
 			System.out.println(
-					"Waiting on an object and receive notification from other." + " Would keep waiting forever....");
+					"Waiting on an object and receive notification from other. Would keep waiting forever....");
 			synchronized (usingDifferentLocksToWait) {
 				System.out.println("Waiting for incorrect object. Should throw exception.");
 				try {
